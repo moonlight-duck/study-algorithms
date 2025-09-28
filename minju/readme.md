@@ -24,6 +24,8 @@ minju/
 ```bash
 # 프로젝트(minju) 폴더로 이동 후 실행
 pnpm ts-node 1000.ts
+# 테스트 실행
+pnpm test {테스트 파일명(백준 폴더 안에)}
 ```
 
 ### 2. 입력과 함께 실행

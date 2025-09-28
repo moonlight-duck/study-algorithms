@@ -5,11 +5,15 @@
   "type": "module",
   "scripts": {
     "ts-node": "cd baekjoon && node --loader ts-node/esm",
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "test:coverage": "vitest --coverage",
+    "test:manual": "cd baekjoon && node --loader ts-node/esm",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "baekjoon": "cd baekjoon"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +23,7 @@
     "typescript": "^5.0.0"
   },
   "devDependencies": {
+    "@types/jest": "^30.0.0",
     "@types/node": "^20.19.17",
     "@typescript-eslint/eslint-plugin": "^8.44.1",
     "@typescript-eslint/parser": "^8.44.1",
@@ -26,6 +31,9 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.4",
-    "prettier": "^3.6.2"
+    "jest": "^30.2.0",
+    "prettier": "^3.6.2",
+    "ts-jest": "^29.4.4",
+    "vitest": "^3.2.4"
   }
 }
