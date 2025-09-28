@@ -16,10 +16,10 @@
    📂 root
    ┣ 📂 jiwon/ 
       ┣ 📂 baekjoon/
-      ┗ 📂 solved/
+      ┗ 📂 programmers/
    ┣ 📂 minju/
       ┣ 📂 baekjoon/
-      ┗ 📂 solved/
+      ┗ 📂 programmers/
 ```
 8. 각자 디렉토리는 알아서 꾸리기
 
