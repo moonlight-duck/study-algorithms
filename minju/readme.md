@@ -10,11 +10,18 @@ https://min-99.tistory.com/14
 
 ```
 minju/
-├── baekjoon/          # 백준 문제 풀이 파일들
-│   └── 1000.ts        # A+B 문제
-├── package.json       # 프로젝트 설정
-├── tsconfig.json      # TypeScript 설정
-└── readme.md          # 프로젝트 설명
+├── baekjoon/             # 백준 문제 풀이 파일들
+│   └── 1000.ts           # A+B 문제
+│   └── 1406/             # 연결리스트 문제 풀이 파일들
+│       └── 1406.ts       # 연결리스트 문제
+│       └── 1406.test.ts  # 연결리스트 문제 테스트 파일
+├── programmers/          # 프로그래머스 문제 풀이 파일들
+├── package.json          # 프로젝트 설정
+├── tsconfig.json         # TypeScript 설정
+├── vitest.config.ts      # Vitest 설정
+├── testHelper.ts         # 테스트 헬퍼 함수
+├── scripts/run.sh        # 실행 스크립트
+└── readme.md             # 프로젝트 설명
 ```
 
 ## 실행 방법
@@ -23,26 +30,23 @@ minju/
 
 ```bash
 # 프로젝트(minju) 폴더로 이동 후 실행
-pnpm ts-node 1000.ts
+pnpm run:ba 1000 # 백준 문제 실행
+pnpm run:pro 1000 # 프로그래머스 문제 실행
+# OR
+pnpm run:ba 1406
 # 테스트 실행
-pnpm test {테스트 파일명(백준 폴더 안에)}
+pnpm test:ba 1000 # 백준 문제 테스트
+pnpm test:pro 1000 # 프로그래머스 문제 테스트
 ```
 
 ### 2. 입력과 함께 실행
 
 ```bash
 # 파이프를 통한 입력
-echo "3 5" | pnpm ts-node 1000.ts
+echo "3 5" | pnpm run:ba 1000
 
 # 여러 줄 입력
-printf "3 5\n10 20\n" | pnpm ts-node 1000.ts
-```
-
-### 3. 직접 입력
-
-```bash
-# 터미널에서 직접 입력 (Ctrl+D로 종료)
-pnpm ts-node 1000.ts
+printf "3 5\n10 20\n" | pnpm run:ba 1000
 ```
 
 ## 문제 목록
@@ -50,6 +54,7 @@ pnpm ts-node 1000.ts
 ### 기본 입출력
 
 - [1000번: A+B](baekjoon/1000.ts) - 두 정수 A와 B를 입력받아 A+B를 출력
+- [1406번: 에디터](baekjoon/1406.ts) - 연결리스트 구현 및 연습
 
 ## 알고리즘 진행 상황
 
@@ -58,7 +63,7 @@ pnpm ts-node 1000.ts
 | 카테고리           | 진행도 | 설명                              |
 | ------------------ | ------ | --------------------------------- |
 | **기본 입출력**    | ✅ 1/1 | 기본적인 입출력 연습              |
-| **연결리스트**     | ⏳ 0/0 | 연결리스트 구현 및 연습           |
+| **연결리스트**     | ⏳ 1/1 | 연결리스트 구현 및 연습           |
 | **스택**           | ⏳ 0/0 | LIFO 자료구조                     |
 | **큐**             | ⏳ 0/0 | FIFO 자료구조                     |
 | **분할정복**       | ⏳ 0/0 | 문제를 분할하여 해결하는 알고리즘 |
@@ -74,7 +79,7 @@ pnpm ts-node 1000.ts
 ### 🎯 목표
 
 - [x] 기본 입출력 완료
-- [ ] 연결리스트 구현 및 연습
+- [x] 연결리스트 구현 및 연습
 - [ ] 스택 자료구조 구현 및 문제 풀이
 - [ ] 큐 자료구조 구현 및 문제 풀이
 - [ ] 분할정복 알고리즘 이해 및 구현
@@ -96,7 +101,10 @@ pnpm ts-node 1000.ts
 
 ## 스크립트
 
-- `pnpm ts-node [파일명]` - TypeScript 파일 실행
+- `pnpm run:ba [파일명/문제번호]` - 백준 문제 실행
+- `pnpm run:pro [파일명/문제번호]` - 프로그래머스 문제 실행
+- `pnpm test:ba [파일명/문제번호]` - 백준 문제 테스트
+- `pnpm test:pro [파일명/문제번호]` - 프로그래머스 문제 테스트
 - `pnpm lint` - 코드 린팅
 - `pnpm lint:fix` - 자동 린팅 수정
 - `pnpm format` - 코드 포맷팅

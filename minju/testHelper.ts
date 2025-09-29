@@ -14,11 +14,17 @@ const execAsync = promisify(exec);
  */
 export async function runBaekjoonTest(
   input: string,
-  scriptPath: string
+  fileName: string | undefined
 ): Promise<string> {
   try {
-    // 백준 입력 데이터를 stdin으로 전달하여 스크립트 실행
-    const command = `cd /Users/takminjoo/study/study-algorithms/minju && echo "${input}" | pnpm run ts-node ${scriptPath}`;
+    // .test.ts 파일명 가져오기
+    const currentFolder = process.cwd();
+    let command = "cd /Users/takminjoo/study/study-algorithms/minju &&";
+    if (currentFolder.includes("baekjoon")) {
+      command += ` echo "${input}" | pnpm run:ba ${fileName}`;
+    } else if (currentFolder.includes("programmers")) {
+      command += ` echo "${input}" | pnpm run:pro ${fileName}`;
+    }
 
     const { stdout } = await execAsync(command);
 

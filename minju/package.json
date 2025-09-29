@@ -4,16 +4,16 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "ts-node": "cd baekjoon && node --loader ts-node/esm",
-    "test": "vitest",
+    "run:ba": "cd baekjoon && ../scripts/run.sh",
+    "run:programmers": "cd programmers && ../scripts/run.sh",
+    "test:ba": " cd baekjoon && ../scripts/test.sh",
+    "test:pro": " cd programmers && ../scripts/test.sh",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
-    "test:manual": "cd baekjoon && node --loader ts-node/esm",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "baekjoon": "cd baekjoon"
+    "format:check": "prettier --check ."
   },
   "keywords": [],
   "author": "",
