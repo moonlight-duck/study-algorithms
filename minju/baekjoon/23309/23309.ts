@@ -28,12 +28,24 @@ class ListNode {
 class LinkedList {
   private head: ListNode | null = null;
   private current: ListNode | null = null;
+  private stationMap: Map<string, ListNode> = new Map();
+
+  createNode(
+    data: string,
+    prev: ListNode | null = null,
+    next: ListNode | null = null
+  ): ListNode {
+    const newNode = new ListNode(data, prev, next);
+    this.stationMap.set(data, newNode);
+    return newNode;
+  }
 
   constructor(data: Array<string>) {
-    this.head = new ListNode(data[0]);
+    this.head = this.createNode(data[0]);
+
     this.current = this.head;
     for (let i = 1; i < data.length; i++) {
-      const newNode: ListNode = new ListNode(data[i], this.current);
+      const newNode: ListNode = this.createNode(data[i], this.current);
 
       if (this.current) this.current.next = newNode;
       this.current = newNode;
@@ -44,15 +56,7 @@ class LinkedList {
   }
 
   findNode(data: string): ListNode | undefined {
-    if (!this.head) return undefined;
-
-    let target = this.head;
-    do {
-      if (target.data === data) return target;
-      target = target.next!;
-    } while (target !== this.head);
-
-    return undefined;
+    return this.stationMap.get(data);
   }
 
   command(
@@ -67,7 +71,7 @@ class LinkedList {
           if (j) {
             if (target?.next?.data) {
               console.log(target.next.data);
-              const newNode = new ListNode(j, target, target.next);
+              const newNode = this.createNode(j, target, target.next);
               target.next.prev = newNode;
               target.next = newNode;
             } else {
@@ -83,7 +87,7 @@ class LinkedList {
           if (j) {
             if (target?.prev?.data) {
               console.log(target.prev.data);
-              const newNode = new ListNode(j, target.prev, target);
+              const newNode = this.createNode(j, target.prev, target);
               target.prev.next = newNode;
               target.prev = newNode;
             } else {
@@ -97,6 +101,7 @@ class LinkedList {
       case "CN": // 고유 번호 i를 가진 역의 다음 역의 고유번호 출력, i의 다음역 폐쇄
         if (target?.next?.data) {
           console.log(target.next.data);
+          this.stationMap.delete(target.next.data);
           if (target?.next?.next) {
             target.next.next.prev = target;
             target.next = target.next.next;
@@ -107,6 +112,7 @@ class LinkedList {
         {
           if (target?.prev?.data) {
             console.log(target.prev.data);
+            this.stationMap.delete(target.prev.data);
             if (target?.prev?.prev) {
               target.prev.prev.next = target;
               target.prev = target.prev.prev;
