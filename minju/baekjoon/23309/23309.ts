@@ -65,12 +65,13 @@ class LinkedList {
     j: string | null = null
   ) {
     const target = i ? this.findNode(i) : undefined;
+    let result = "";
     switch (commad) {
       case "BN": // 고유 번호 i를 가진 역의 다음 역의 고유번호 출력, 그 사이에 고유번호 j 설립
         {
           if (j) {
             if (target?.next?.data) {
-              console.log(target.next.data);
+              result = target.next.data;
               const newNode = this.createNode(j, target, target.next);
               target.next.prev = newNode;
               target.next = newNode;
@@ -86,7 +87,7 @@ class LinkedList {
         {
           if (j) {
             if (target?.prev?.data) {
-              console.log(target.prev.data);
+              result = target.prev.data;
               const newNode = this.createNode(j, target.prev, target);
               target.prev.next = newNode;
               target.prev = newNode;
@@ -100,7 +101,7 @@ class LinkedList {
         break;
       case "CN": // 고유 번호 i를 가진 역의 다음 역의 고유번호 출력, i의 다음역 폐쇄
         if (target?.next?.data) {
-          console.log(target.next.data);
+          result = target.next.data;
           this.stationMap.delete(target.next.data);
           if (target?.next?.next) {
             target.next.next.prev = target;
@@ -111,7 +112,7 @@ class LinkedList {
       case "CP": // 고유 번호 i를 가진 역의 이전 역의 고유번호 출력, i의 다음역 폐쇄
         {
           if (target?.prev?.data) {
-            console.log(target.prev.data);
+            result = target.prev.data;
             this.stationMap.delete(target.prev.data);
             if (target?.prev?.prev) {
               target.prev.prev.next = target;
@@ -121,6 +122,7 @@ class LinkedList {
         }
         break;
     }
+    return result;
   }
 }
 
@@ -133,7 +135,10 @@ const nodeList = new LinkedList(input[1].split(" "));
 const commandList = input.slice(2);
 
 // 명령어 처리
+const result = [];
 for (let k = 0; k < M; k++) {
   const [command, i, j] = commandList[k].split(" ");
-  nodeList.command(command as commandType, i, j);
+  result.push(nodeList.command(command as commandType, i, j));
 }
+
+console.log(result.join("\n"));
