@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# 백준 테스트 실행 스크립트
-# 사용법: ./scripts/test.sh 1406
-# 또는: pnpm test 1406
 
 if [ $# -eq 0 ]; then
     echo "사용법: $0 <문제번호>"
@@ -28,4 +25,4 @@ if [ ! -f "$TEST_FILE" ]; then
 fi
 
 # vitest로 특정 테스트 파일 실행
-npx vitest "$TEST_FILE" --run --config vitest.config.ts
+npx vitest "$TEST_FILE" --run --config ../vitest.config.ts

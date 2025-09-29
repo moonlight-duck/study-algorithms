@@ -6,18 +6,12 @@ import { promisify } from "util";
 
 const execAsync = promisify(exec);
 
-/**
- * 백준 문제를 실행하고 결과를 반환하는 함수
- * @param input 백준 형식의 입력 데이터 (줄바꿈으로 구분된 문자열)
- * @param scriptPath 실행할 스크립트 경로 (예: "1406/1406.ts")
- * @returns 실행 결과 (마지막 줄)
- */
+
 export async function runBaekjoonTest(
   input: string,
   fileName: string | undefined
 ): Promise<string> {
   try {
-    // .test.ts 파일명 가져오기
     const currentFolder = process.cwd();
     let command = "cd /Users/takminjoo/study/study-algorithms/minju &&";
     if (currentFolder.includes("baekjoon")) {

@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# 백준 문제 실행 스크립트
-# 사용법: ./scripts/run.sh 1406
-# 또는: pnpm ts-node 1406
 
 if [ $# -eq 0 ]; then
     echo "사용법: $0 <문제번호>"
