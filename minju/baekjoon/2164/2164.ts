@@ -6,14 +6,14 @@ import { readFileSync } from "fs";
 
 const N: number = Number(readFileSync("/dev/stdin").toString().trim());
 const data: Array<number> = Array.from({ length: N }, (_, i) => i + 1);
+let head = 0;
 
-while (data.length > 1) {
-  data.shift();
+while (head < data.length - 1) {
+  head++; // 맨 위 카드 버리기
 
-  if (data.length > 0) {
-    const front = data.shift()!; // 맨 위 카드 꺼내기
-    data.push(front); // 맨 뒤로 이동
-  }
+  // 맨 위 카드를 맨 뒤로 이동
+  data.push(data[head]);
+  head++;
 }
 
-console.log(data[0]);
+console.log(data[head]);
