@@ -1,3 +1,7 @@
+/**
+ * 카테고리 : 스택
+ * 문제 : https://www.acmicpc.net/problem/10828
+ */
 class Stack {
   private data: number[] = [];
 
