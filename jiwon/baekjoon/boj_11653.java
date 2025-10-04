@@ -11,6 +11,10 @@ public class boj_11653 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int num = Integer.parseInt(br.readLine());
 
+        getPrimeFactorization(num);
+    }
+
+    private static void getPrimeFactorization(int num) {
         if (num > 1) {
             List<Integer> primes = new ArrayList<>();
             primes.add(2);
