@@ -19,8 +19,10 @@ public class boj_2751 {
 
         Collections.sort(list);
 
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < n; i++) {
-            System.out.println(list.get(i));
+            sb.append(list.get(i)).append("\n");
         }
+        System.out.println(sb);
     }
 }
