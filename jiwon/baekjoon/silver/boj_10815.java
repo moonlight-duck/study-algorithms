@@ -1,10 +1,9 @@
-package baekjoon;
+package baekjoon.silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.StringTokenizer;
 
 public class boj_10815 {
@@ -12,13 +11,15 @@ public class boj_10815 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer token;
 
-        List<Integer> list = new ArrayList<>();
+        HashMap<Integer, Integer> map = new HashMap<>();
         StringBuilder sb = new StringBuilder();
 
         int n = Integer.parseInt(br.readLine());
+
         token = new StringTokenizer(br.readLine(), " ");
         for (int i = 0; i < n; i ++) {
-            list.add(Integer.parseInt(token.nextToken()));
+            int num = Integer.parseInt(token.nextToken());
+            map.put(num, num);
         }
 
         int m =  Integer.parseInt(br.readLine());
@@ -26,7 +27,7 @@ public class boj_10815 {
         for (int i = 0; i < m; i ++) {
             int find =  Integer.parseInt(token.nextToken());
 
-            if (list.contains(find)) {
+            if (map.containsKey(find)) {
                 sb.append(1).append(" ");
             } else {
                 sb.append(0).append(" ");
