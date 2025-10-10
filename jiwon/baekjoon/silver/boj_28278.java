@@ -1,4 +1,4 @@
-package baekjoon;
+package baekjoon.silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -24,8 +24,8 @@ public class boj_28278 {
                     if (list.isEmpty()) {
                         sb.append("-1").append("\n");
                     } else {
-                        sb.append(list.getLast()).append("\n");
-                        list.removeLast();
+                        sb.append(list.get(list.size()-1)).append("\n");
+                        list.remove(list.size()-1);
                     }
                 }
                 case "3" -> sb.append(list.size()).append("\n");
@@ -40,7 +40,7 @@ public class boj_28278 {
                     if (list.isEmpty()) {
                         sb.append("-1").append("\n");
                     } else {
-                        sb.append(list.getLast()).append("\n");
+                        sb.append(list.get(list.size()-1)).append("\n");
                     }
                 }
             }
