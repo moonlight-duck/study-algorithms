@@ -9,11 +9,13 @@ fi
 
 PROBLEM_NUMBER=$1
 
+# _기준으로 잘라서 폴더명 추출 (앞 부분만)
+FOLDER_NAME=${PROBLEM_NUMBER%%_*}
 
 # 폴더가 존재하는지 확인
-if [ -d "$PROBLEM_NUMBER" ]; then
-    # 폴더가 있으면 폴더 안의 파일 실행
-    FILE_PATH="${PROBLEM_NUMBER}/${PROBLEM_NUMBER}.ts"
+if [ -d "$FOLDER_NAME" ]; then
+    # 폴더가 있으면 폴더 안의 파일 실행 (파일명은 전체 사용)
+    FILE_PATH="${FOLDER_NAME}/${PROBLEM_NUMBER}.ts"
 else
     # 폴더가 없으면 직접 파일 실행
     FILE_PATH="${PROBLEM_NUMBER}.ts"
