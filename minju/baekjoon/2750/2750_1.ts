@@ -9,7 +9,7 @@ const lines = readFileSync("/dev/stdin").toString().trim().split("\n");
 
 const input = lines.slice(1).map(Number);
 
-for (let i = 0; i < input.length; i++) {
+for (let i = 1; i < input.length; i++) {
   const current = input[i];
   let j = i - 1;
   while (j >= 0 && input[j] > current) {
