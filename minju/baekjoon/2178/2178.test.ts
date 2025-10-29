@@ -1,6 +1,3 @@
-/**
- * 백준 23309 지하철 - Vitest 테스트
- */
 import { describe, it, expect } from "vitest";
 
 import { runBaekjoonTest } from "../../testHelper.js";
