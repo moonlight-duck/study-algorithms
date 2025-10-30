@@ -1,6 +1,6 @@
 /**
- * 카테고리 : 큐
- * 문제 : https://www.acmicpc.net/problem/2164
+ * 카테고리 : BFS
+ * 문제 : https://www.acmicpc.net/problem/7562
  */
 import { readFileSync } from "fs";
 
