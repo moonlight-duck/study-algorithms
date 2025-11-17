@@ -13,8 +13,10 @@ const DP: number[][] = Array.from({ length: max + 1 }, () => [0, 0]);
 
 DP[0][0] = 1;
 DP[0][1] = 0;
-DP[1][0] = 0;
-DP[1][1] = 1;
+if (max >= 1) {
+  DP[1][0] = 0;
+  DP[1][1] = 1;
+}
 
 for (let i = 2; i <= max; i++) {
   DP[i][0] = DP[i - 1][0] + DP[i - 2][0];
