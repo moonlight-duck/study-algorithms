@@ -11,9 +11,10 @@ const DP = Array.from({ length: N + 1 }, () => 0);
 DP[0] = 0;
 DP[1] = 1;
 DP[2] = 2;
+DP[3] = 3;
 
-for (let i = 3; i <= N; i++) {
-  DP[i] = DP[i - 1] + DP[i - 2];
+for (let i = 4; i <= N; i++) {
+  DP[i] = (DP[i - 1] + DP[i - 2]) % 10007;
 }
 
-console.log(DP[N] % 10007);
+console.log(DP[N]);
