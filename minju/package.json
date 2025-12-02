@@ -6,8 +6,10 @@
   "scripts": {
     "run:ba": "cd baekjoon && ../scripts/run.sh",
     "run:pro": "cd programmers && ../scripts/run.sh",
+    "run:con": "cd contest && ../scripts/run.sh",
     "test:ba": "cd baekjoon && ../scripts/test.sh",
     "test:pro": "cd programmers && ../scripts/test.sh",
+    "test:con": "cd contest && ../scripts/test.sh",
     "test:watch": "vitest --watch",
     "test:coverage": "vitest --coverage",
     "lint": "eslint . --ext .ts",
