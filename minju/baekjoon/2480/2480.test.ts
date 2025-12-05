@@ -23,4 +23,16 @@ describe("백준 2480번 - 공식 테스트 케이스", async () => {
     const result = await runBaekjoonTest(input, FILE_NAME);
     expect(result).toBe(`600`);
   });
+  it("예제 4", async () => {
+    const input = `6 1 6`;
+
+    const result = await runBaekjoonTest(input, FILE_NAME);
+    expect(result).toBe(`1600`);
+  });
+  it("예제 5", async () => {
+    const input = `1 6 6`;
+
+    const result = await runBaekjoonTest(input, FILE_NAME);
+    expect(result).toBe(`1600`);
+  });
 });

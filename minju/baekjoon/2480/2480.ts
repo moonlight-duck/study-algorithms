@@ -13,7 +13,7 @@ if (a === b && b === c) {
 } else if (a == c && c !== b) {
   // b만 다른경우
   console.log(1000 + a * 100);
-} else if (b === c && b !== c) {
+} else if (b === c && b !== a) {
   // a만 다른경우
   console.log(1000 + b * 100);
 } else {
