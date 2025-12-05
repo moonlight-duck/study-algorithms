@@ -5,16 +5,10 @@ const [a, b] = readFileSync("/dev/stdin")
   .split("\n")
   .map(Number);
 
-let exp = 1;
-const result: number[] = [];
-let total = 0;
+const arrB: number[] = b.toString().split("").map(Number);
 
-while (b / exp > 1) {
-  const value = a * ((b % (exp * 10)) - (b % exp));
-  result.push(value);
-  console.log(value / exp);
-  total += value;
-  exp *= 10;
+for (let i = arrB.length - 1; i >= 0; i--) {
+  console.log(a * arrB[i]);
 }
 
-console.log(total);
+console.log(a * b);
