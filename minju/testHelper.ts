@@ -1,5 +1,5 @@
 /**
- * 백준 문제 테스트 헬퍼 함수
+ * 테스트 헬퍼 함수
  */
 import { exec } from "child_process";
 import { promisify } from "util";
@@ -13,7 +13,10 @@ export async function runBaekjoonTest(
   try {
     const currentFolder = process.cwd();
     let command = "cd /Users/takminjoo/study/study-algorithms/minju &&";
-    if (currentFolder.includes("baekjoon")) {
+    if (currentFolder.includes("contest")) {
+      const args = fileName?.replace("/", " ");
+      command += ` echo "${input}" | pnpm run:con ${args}`;
+    } else if (currentFolder.includes("baekjoon")) {
       command += ` echo "${input}" | pnpm run:ba ${fileName}`;
     } else if (currentFolder.includes("programmers")) {
       command += ` echo "${input}" | pnpm run:pro ${fileName}`;
@@ -31,6 +34,7 @@ export async function runBaekjoonTest(
         !line.startsWith("> ") &&
         !line.includes("minju@") &&
         !line.includes("cd baekjoon") &&
+        !line.includes("cd contest") &&
         !line.includes("scripts/run.sh") &&
         !line.includes("scripts/test.sh")
     );
