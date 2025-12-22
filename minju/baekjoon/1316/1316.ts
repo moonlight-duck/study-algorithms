@@ -1,41 +1,28 @@
 import { readFileSync } from "fs";
 const input = readFileSync("/dev/stdin").toString().trim().split("\n");
 const n = Number(input[0]);
-let check: string[] = [];
 let cnt = 0;
-
-const isPush = (value: string): boolean => {
-  const lastChar = check[check.length - 1];
-  if (lastChar) {
-    if (value === lastChar) {
-      return true;
-    } else {
-      if (check.indexOf(value) >= 0) {
-        return false;
-      } else {
-        check.push(value);
-        return true;
-      }
-    }
-  } else {
-    check.push(value);
-    return true;
-  }
-};
 
 for (let i = 1; i <= n; i++) {
   const word = input[i];
-  let isCheck = true;
-  check = [];
-  for (let j = 0; j < word.length; j++) {
-    const result = isPush(word[j]);
-    if (!result) {
-      isCheck = false;
-      break;
+  const check = new Set();
+  let isGroupWord = true;
+  let prevChar = word[0];
+  check.add(word[0]);
+
+  for (let j = 1; j < word.length; j++) {
+    if (prevChar !== word[j]) {
+      if (check.has(word[j])) {
+        isGroupWord = false;
+        break;
+      } else {
+        check.add(word[j]);
+        prevChar = word[j];
+      }
     }
   }
 
-  if (isCheck && word != "") {
+  if (isGroupWord) {
     cnt += 1;
   }
 }
