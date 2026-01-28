@@ -14,21 +14,4 @@ describe("백준 2563번 - 공식 테스트 케이스", async () => {
     const result = await runBaekjoonTest(input, FILE_NAME);
     expect(result).toBe(`260`);
   });
-  it("예제 1", async () => {
-    const input = `2
-1 1
-1 1`;
-
-    const result = await runBaekjoonTest(input, FILE_NAME);
-    expect(result).toBe(`0`);
-  });
-
-  it("예제 1", async () => {
-    const input = `2
-3 1
-1 1`;
-
-    const result = await runBaekjoonTest(input, FILE_NAME);
-    expect(result).toBe(`30`);
-  });
 });

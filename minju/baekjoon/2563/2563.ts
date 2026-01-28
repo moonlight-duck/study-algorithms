@@ -2,32 +2,26 @@ import { readFileSync } from "fs";
 const input = readFileSync("/dev/stdin").toString().trim().split("\n");
 const n = Number(input[0]);
 
-let result = n * 100;
-for (let i = 1; i < n; i++) {
-  const [targetX, targetY] = input[i].split(" ").map(Number);
-  for (let j = i + 1; j <= n; j++) {
-    const [x, y] = input[j].split(" ").map(Number);
+const area = Array.from({ length: 100 }, () => Array(100).fill(0));
 
-    if (
-      (targetX >= x && targetX - 10 <= x) ||
-      (targetX < x && targetX + 10 >= x)
-    ) {
-      if (
-        (targetY >= y && targetY - 10 <= y) ||
-        (targetY < y && targetY + 10 >= y)
-      ) {
-        // 겹치는 범위이다
-        const nX = Math.abs(
-          Math.max(targetX, x) - Math.min(targetX + 10, x + 10)
-        );
-        const nY = Math.abs(
-          Math.max(targetY, y) - Math.min(targetY + 10, y + 10)
-        );
-
-        result -= nX * nY === 100 ? 200 : nX * nY;
-      }
+// 체크
+for (let i = 1; i <= n; i++) {
+  const [sX, sY] = input[i].split(" ").map(Number);
+  for (let j = 0; j < 10; j++) {
+    for (let k = 0; k < 10; k++) {
+      area[sX + j][sY + k] = 1;
     }
   }
 }
 
-console.log(result);
+// 넓이 확인
+let total = 0;
+for (let i = 0; i < 100; i++) {
+  for (let j = 0; j < 100; j++) {
+    if (area[i][j] === 1) {
+      total += 1;
+    }
+  }
+}
+
+console.log(total);
