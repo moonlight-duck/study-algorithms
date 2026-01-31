@@ -39,7 +39,7 @@ public class boj_15649 {
                 arr[depth] = i + 1;
                 dfs(N, M, depth + 1);
 
-                visit[i] = false;
+                visit[i] = false; // 다시 나왔으니
             }
         }
     }
