@@ -29,13 +29,13 @@ for (let i = 1; i < input.length; i++) {
       result.push(queue.length - index);
       break;
     case "empty":
-      result.push(queue.slice(index).length === 0 ? 1 : 0);
+      result.push(queue.length - index === 0 ? 1 : 0);
       break;
     case "front":
-      result.push(queue[index] || -1);
+      result.push(index < queue.length ? queue[index] : -1);
       break;
     case "back":
-      result.push(queue[queue.length - 1] || -1);
+      result.push(index < queue.length ? queue[queue.length - 1] : -1);
       break;
   }
 }
