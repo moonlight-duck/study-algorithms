@@ -8,9 +8,15 @@ const dic = Array.from({ length: 26 }, () =>
 const KEY = 97;
 
 for (let i = 0; i < str.length; i++) {
-  for (let j = i; j < str.length; j++) {
-    dic[str[i].charCodeAt(0) - KEY][j] = dic[str[i].charCodeAt(0) - KEY][j] + 1;
+  const charIdx = str[i].charCodeAt(0) - KEY;
+
+  if (i > 0) {
+    for (let a = 0; a < 26; a++) {
+      dic[a][i] = dic[a][i - 1];
+    }
   }
+
+  dic[charIdx][i]++;
 }
 
 const result = [];
