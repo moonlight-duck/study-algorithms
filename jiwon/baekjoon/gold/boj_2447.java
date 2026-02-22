@@ -1,4 +1,4 @@
-package baekjoon;
+package baekjoon.gold;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -47,9 +47,9 @@ public class boj_2447 {
                 count++;
 
                 if (count == 5) {
-                    star(i, j, size, true);
+                    star(size, i, j, true);
                 } else {
-                    star(i, j, size, false);
+                    star(size, i, j, false);
                 }
             }
         }
