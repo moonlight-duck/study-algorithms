@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class boj_2447 {
     static char[][] arr;
 
-    public static void main(String args[]) throws IOException {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(br.readLine());
 
