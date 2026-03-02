@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
 public class boj_15649 {
     public static StringBuilder sb = new StringBuilder();
 
-    public static int[] arr;
+    public static int[] result;
     public static boolean[] visit;
 
     public static void main(String[] args) throws IOException {
@@ -17,29 +17,32 @@ public class boj_15649 {
         int n = Integer.parseInt(token.nextToken());
         int m = Integer.parseInt(token.nextToken());
 
-        arr = new int[m];
+        result = new int[m];
         visit = new boolean[n];
+
         dfs(n, m, 0);
         System.out.print(sb);
     }
 
-    public static void dfs(int N, int M, int depth) {
-        if (depth == M) { // 끝까지 갔다면
-            for (int val : arr) {
-                sb.append(val).append(' ');
+    private static void dfs(int n, int m, int depth) {
+        // 끝까지 도달했다면
+        if (depth == m) {
+            for (int num : result) {
+                sb.append(num).append(" ");
             }
             sb.append('\n');
             return;
         }
 
-        for (int i = 0; i < N; i++) {
-            if (!visit[i]) { // 방문하지 않았다면
+        for (int i = 0; i < n; i++) {
+            // 아직 방문하지 않았다면
+            if (!visit[i]) {
                 visit[i] = true;
 
-                arr[depth] = i + 1;
-                dfs(N, M, depth + 1);
+                result[depth] = i+1;
+                dfs(n, m, depth + 1);
 
-                visit[i] = false; // 다시 나왔으니
+                visit[i] = false;
             }
         }
     }
