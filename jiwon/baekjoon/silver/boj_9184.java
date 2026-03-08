@@ -1,4 +1,4 @@
-package baekjoon;
+package baekjoon.silver;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class boj_9184 {
+    public static int[][][] dp = new int[21][21][21]; // 20보다 클 때 w 결과값을 사용하기 때문
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st;
@@ -36,16 +38,23 @@ public class boj_9184 {
             return w(20, 20, 20);
         }
 
-        if (a < b && b < c) {
-            return w(a, b, c - 1)
-                    + w(a, b - 1, c - 1)
-                    - w(a, b - 1, c);
+        // 이미 계산된 값이면 계산할 필요 없음
+        if (dp[a][b][c] != 0) {
+            return dp[a][b][c];
         }
 
-        return w(a - 1, b, c)
-                + w(a - 1, b - 1, c)
-                + w(a - 1, b, c - 1)
-                - w(a - 1, b - 1, c - 1);
+        if (a < b && b < c) {
+            dp[a][b][c] = w(a, b, c - 1)
+                    + w(a, b - 1, c - 1)
+                    - w(a, b - 1, c);
+        } else {
+            dp[a][b][c] = w(a - 1, b, c)
+                    + w(a - 1, b - 1, c)
+                    + w(a - 1, b, c - 1)
+                    - w(a - 1, b - 1, c - 1);
+        }
+
+        return dp[a][b][c];
     }
 
     private static void print(int num1, int num2, int num3, int result) {
